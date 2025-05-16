@@ -1,598 +1,2119 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mahadeep Enterprises</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PrecisionMetal - Expert Metal Fabrication Services</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Poppins", sans-serif;
-        }
+      :root {
+        --primary: #2563eb;
+        --secondary: #0f172a;
+        --accent: #f59e0b;
+        --light: #f8fafc;
+        --dark: #0f172a;
+        --gray: #64748b;
+      }
 
-        :root {
-            --primary-color: #ff0000;
-            --primary-dark: #800000;
-            --text-light: #D3D3D3;
-            --background-dark: #222;
-            --background-darker: #111;
-            --transition-speed: 0.3s;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
 
-        body {
-            background-color: black;
-        }
+      html {
+        scroll-behavior: smooth;
+      }
 
-        /* Navigation Styles */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-            height: 80px;
-            position: fixed;
-            width: 100%;
-            opacity: 0.5px;
-            top: 0;
-            left: 0;
-            z-index: 999;
-            background-color: rgba(0, 0, 0, 0.8);
-        }
+      body {
+        background-color: var(--light);
+        /* background-image: url(''); */
+        color: var(--dark);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
 
-        nav img {
-            width: 114px;
-        }
+      /* Header & Navigation */
+      header {
+        background-color: rgba(15, 22, 42, 0.9);
+        backdrop-filter: blur(10px);
+        position: fixed;
+        width: 100%;
+        z-index: 1000;
+        transition: all 0.3s ease;
+      }
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 30px;
-            margin: 0;
-        }
+      header.scrolled {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
 
-        nav ul li a {
-            text-decoration: none;
-            color: var(--text-light);
-            transition: color 0.3s, font-size 0.3s;
-        }
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 8%;
+      }
 
-        nav ul li a:hover {
-            font-size: 1.2rem;
-            color: yellow;
-        }
+      .logo {
+        display: flex;
+        align-items: center;
+        color: white;
+        font-size: 1.5rem;
+        font-weight: 700;
+        text-decoration: none;
+      }
 
-        .auth-links {
-            display: flex;
-            gap: 20px;
-        }
+      .logo i {
+        color: var(--accent);
+        margin-right: 0.5rem;
+        font-size: 1.8rem;
+      }
 
-        .auth-links a {
-            text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            font-weight: 500;
-            color: white;
-            transition: all 0.3s;
-        }
+      .nav-links {
+        display: flex;
+        list-style: none;
+      }
 
-        .auth-links a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
+      .nav-links li {
+        margin-left: 2rem;
+      }
 
-        /* Hero Section */
-        #backVid {
-            height: 100%;
-            width: 100%;
-            object-fit: cover;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: -1;
-            opacity: 0.3;
-        }
+      .nav-links a {
+        color: #e2e8f0;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        position: relative;
+      }
 
-        .hero {
-            color: var(--text-light);
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            gap: 20px;
-            padding: 0 20px;
-            background: rgba(0, 0, 0, 0.4);
-        }
+      .nav-links a:hover {
+        color: var(--accent);
+      }
 
-        .hero > :nth-child(2) {
-            font-weight: 800;
-            font-size: 3.5rem;
-        }
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--accent);
+        transition: width 0.3s ease;
+      }
 
-        .hero > :nth-child(3) {
-            font-size: 1.2rem;
-            font-weight: 500;
-        }
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+      /* Sidebar Base */
+      <!-- .auth-sidebar {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        max-width: 400px;
+        height: 100%;
+        background: linear-gradient(to bottom right, #5b668f, #203a43, #2c5364);
+        color: #ffffff;
+        box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3);
+        z-index: 10000;
+        transition: right 0.4s ease;
+        overflow-y: auto;
+        font-family: "Segoe UI", sans-serif;
+        backdrop-filter: blur(10px);
+        border-top-left-radius: 30px;
+        border-bottom-left-radius: 30px;
+      }
 
-        /* About Section */
-        .about-section {
-            background-color: var(--background-dark);
-            padding: 80px 20px;
-        }
+      .auth-sidebar.active {
+        right: 0;
+      }
 
+      .auth-sidebar-content {
+        padding: 2rem;
+        position: relative;
+      }
+
+      /* Close Button */
+      .close-btn {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        font-size: 1.6rem;
+        cursor: pointer;
+        color: #ffffffcc;
+        transition: color 0.3s ease;
+      }
+
+      .close-btn:hover {
+        color: #ffffff;
+      }
+
+      /* Tabs */
+      .auth-tabs {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        justify-content: center;
+      }
+
+      .auth-tab {
+        background: none;
+        border: none;
+        color: #ccc;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        padding-bottom: 4px;
+        border-bottom: 2px solid transparent;
+        transition: all 0.3s ease;
+      }
+
+      .auth-tab.active {
+        color: #00ffd9;
+        border-color: #00ffd9;
+      }
+
+      .auth-tab:hover {
+        color: #ffffff;
+      }
+
+      /* Form Section */
+      .auth-form {
+        display: none;
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      .auth-form.active {
+        display: block;
+      }
+
+      .auth-form h2 {
+        color: #00ffd9;
+        margin-bottom: 0.5rem;
+      }
+
+      .auth-subtitle {
+        color: #cccccc;
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+      }
+
+      /* Inputs */
+      .form-group {
+        margin-bottom: 1.2rem;
+      }
+
+      .form-group label {
+        display: block;
+        font-weight: 500;
+        margin-bottom: 5px;
+        color: #000000;
+      }
+
+      .form-group input[type="text"],
+      .form-group input[type="email"],
+      .form-group input[type="password"] {
+        width: 100%;
+        padding: 10px 14px;
+        border: 1px solid #444;
+        background: #ffffff;
+        color: #000000;
+        border-radius: 4px;
+        font-size: 1rem;
+        transition: border-color 0.3s, box-shadow 0.3s;
+      }
+
+      .form-group input:focus {
+        outline: none;
+        border-color: #00ffd9;
+        box-shadow: 0 0 0 3px rgba(0, 255, 217, 0.2);
+      }
+
+      /* Checkbox and Forgot */
+      .remember-forgot {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.85rem;
+        color: #ccc;
+      }
+
+      .remember-forgot a {
+        color: #00ffd9;
+        text-decoration: none;
+      }
+
+      .remember-forgot a:hover {
+        text-decoration: underline;
+      }
+
+      /* Button Styles */
+      .btn.primary {
+        background: #00ffd9;
+        color: #000;
+        border: none;
+        padding: 12px;
+        width: 100%;
+        font-size: 1rem;
+        font-weight: bold;
+        border-radius: 4px;
+        transition: background 0.3s ease, transform 0.2s;
+      }
+
+      .btn.primary:hover {
+        background: #00ccaa;
+        transform: translateY(-2px);
+      }
+
+      /* Social Buttons */
+      .social-auth {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 1rem;
+      }
+
+      .social-auth-btn {
+        width: 48%;
+        padding: 10px;
+        border: none;
+        border-radius: 4px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      .google {
+        background: #db4437;
+        color: white;
+      }
+
+      .google:hover {
+        background: #c13429;
+      }
+
+      .github {
+        background: #333;
+        color: white;
+      }
+
+      .github:hover {
+        background: #111;
+      }
+
+      /* Separator */
+      .auth-separator {
+        text-align: center;
+        margin: 1.5rem 0;
+        position: relative;
+        color: #aaa;
+        font-size: 0.85rem;
+      }
+
+      .auth-separator::before,
+      .auth-separator::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        width: 40%;
+        height: 1px;
+        background: #444;
+      }
+
+      .auth-separator::before {
+        left: 0;
+      }
+
+      .auth-separator::after {
+        right: 0;
+      }
+
+      /* Fade In Animation */
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      -->
+
+
+
+      /* Optional: Blur background when sidebar is active */
+      body.sidebar-open::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        backdrop-filter: blur(3px);
+        background-color: rgba(0, 0, 0, 0.3);
+        z-index: 9999;
+      }
+
+      .mobile-menu-btn {
+        display: none;
+        background: transparent;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      /* Hero Section */
+      #hero {
+        height: 100vh;
+        background-image: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0.7),
+            rgba(0, 0, 0, 0.5)
+          ),
+          url("grinding.jpg");
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        color: white;
+        padding: 0 8%;
+        opacity: var(--dark) 0.8;
+      }
+
+      .hero-content {
+        max-width: 700px;
+      }
+
+      .hero-content h1 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+      }
+
+      .hero-content p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        opacity: 0.9;
+      }
+      .fab-text {
+        color: #00ffd9ea;
+        font-weight: normal;
+        font-size: 22px;
+        font-family: monospace;
+        white-space: nowrap;
+        overflow: hidden;
+        border-right: 2px solid #00ffd9ea;
+        display: inline-block;
+        animation: blink 1s step-end infinite;
+      }
+      /* }
+      @keyframes typing {
+        0% {
+          content: "(Engineering Fabrication)";
+          width: 0;
+        }
+        25% {
+          content: "(Engineering Fabrication)";
+          width: 22ch;
+        }
+        50% {
+          content: "MFG:- Elevators Counter Weight";
+          width: 0;
+        }
+        75% {
+          content: "MFG:- Elevators Counter Weight";
+          width: 22ch;
+        }
+         100% {
+          content: "(Engineering Fabrication)";
+          width: 0;
+        }
+      } */
+
+      @keyframes blink {
+        0%,
+        100% {
+          border-color: transparent;
+        }
+        50% {
+          border-color: #00ffd9ea;
+        }
+      }
+
+      .cta-btn {
+        display: inline-block;
+        background-color: var(--accent);
+        color: white;
+        padding: 0.8rem 2rem;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        border: 2px solid var(--accent);
+      }
+
+      .cta-btn:hover {
+        background-color: transparent;
+        color: var(--accent);
+        transform: translateY(-3px);
+      }
+
+      .cta-btn.secondary {
+        background-color: transparent;
+        color: white;
+        border: 2px solid white;
+        margin-left: 1rem;
+      }
+
+      .cta-btn.secondary:hover {
+        background-color: white;
+        color: var(--dark);
+      }
+
+      /* About Section */
+      #about {
+        padding: 6rem 8%;
+        background-color: white;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .section-title h2 {
+        font-size: 2.5rem;
+        color: var(--dark);
+        position: relative;
+        display: inline-block;
+        margin-bottom: 1rem;
+      }
+
+      .section-title h2::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background-color: var(--accent);
+      }
+
+      .about-content {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+      }
+
+      .about-image {
+        flex: 1;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .about-image img {
+        width: 100%;
+        height: 400px;
+        display: block;
+        transition: transform 0.5s ease;
+      }
+
+      .about-image:hover img {
+        transform: scale(1.05);
+      }
+
+      .about-text {
+        flex: 1;
+      }
+
+      .about-text h3 {
+        font-size: 1.8rem;
+        color: var(--dark);
+        margin-bottom: 1.5rem;
+      }
+
+      .about-text p {
+        margin-bottom: 1.5rem;
+        color: var(--gray);
+      }
+
+      .about-stats {
+        display: flex;
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .stat {
+        flex: 1;
+      }
+
+      .stat-number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+      }
+
+      .stat-text {
+        font-size: 1rem;
+        color: var(--gray);
+      }
+
+      /* Services Section */
+      #services {
+        background-color: #f1f5f9;
+        padding: 6rem 8%;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .service-card {
+        background-color: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+      }
+
+      .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .service-img {
+        height: 200px;
+        overflow: hidden;
+      }
+
+      .service-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .service-card:hover .service-img img {
+        transform: scale(1.1);
+      }
+
+      .service-content {
+        padding: 1.5rem;
+      }
+
+      .service-content h3 {
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+        color: var(--dark);
+      }
+
+      .service-content p {
+        color: var(--gray);
+        margin-bottom: 1.5rem;
+        font-size: 0.95rem;
+      }
+
+      .read-more {
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+      }
+
+      .read-more i {
+        margin-left: 0.5rem;
+        transition: transform 0.3s ease;
+      }
+
+      .read-more:hover i {
+        transform: translateX(5px);
+      }
+
+      /* Projects Section */
+      #projects {
+        padding: 6rem 8%;
+        background-color: white;
+      }
+
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 2rem;
+      }
+
+      .project-card {
+        position: relative;
+        border-radius: 8px;
+        overflow: hidden;
+        height: 300px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .project-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .project-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.8) 0%,
+          rgba(0, 0, 0, 0.4) 30%,
+          rgba(0, 0, 0, 0) 100%
+        );
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 1.5rem;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .project-card:hover .project-overlay {
+        opacity: 1;
+      }
+
+      .project-title {
+        color: white;
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .project-category {
+        color: var(--accent);
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+      }
+
+      .project-link {
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+      }
+
+      .project-link i {
+        margin-left: 0.5rem;
+      }
+
+      /* Testimonials Section */
+      #testimonials {
+        background-color: #f1f5f9;
+        padding: 6rem 8%;
+      }
+
+      .testimonials-slider {
+        position: relative;
+        max-width: 900px;
+        margin: 0 auto;
+        overflow: hidden;
+      }
+
+      .testimonials-container {
+        display: flex;
+        transition: transform 0.5s ease;
+      }
+
+      .testimonial {
+        flex: 0 0 100%;
+        padding: 2rem;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .testimonial-content {
+        position: relative;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        background-color: #f8fafc;
+        border-radius: 8px;
+      }
+
+      .testimonial-content::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 30px;
+        width: 20px;
+        height: 20px;
+        background-color: #f8fafc;
+        transform: rotate(45deg);
+      }
+
+      .testimonial-content p {
+        font-style: italic;
+        color: var(--gray);
+      }
+
+      .quote-icon {
+        color: var(--accent);
+        font-size: 2rem;
+        opacity: 0.3;
+        position: absolute;
+        top: 10px;
+        right: 20px;
+      }
+
+      .client-info {
+        display: flex;
+        align-items: center;
+      }
+
+      .client-image {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 1rem;
+      }
+
+      .client-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .client-details h4 {
+        color: var(--dark);
+        font-size: 1.1rem;
+        margin-bottom: 0.2rem;
+      }
+
+      .client-details p {
+        color: var(--gray);
+        font-size: 0.9rem;
+      }
+
+      .slider-controls {
+        display: flex;
+        justify-content: center;
+        margin-top: 2rem;
+      }
+
+      .slider-btn {
+        background-color: white;
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 0.5rem;
+        cursor: pointer;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .slider-btn:hover {
+        background-color: var(--accent);
+        color: white;
+      }
+
+      /* Call to Action Section */
+      #cta {
+        background-image: linear-gradient(
+            rgba(15, 23, 42, 0.9),
+            rgba(15, 23, 42, 0.9)
+          ),
+          url("/api/placeholder/1600/600");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        padding: 6rem 8%;
+        color: white;
+        text-align: center;
+      }
+
+      .cta-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .cta-content h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .cta-content p {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+        opacity: 0.9;
+      }
+
+      /* Contact Section */
+      #contact {
+        padding: 6rem 8%;
+        background-color: white;
+      }
+
+      .contact-container {
+        display: flex;
+        gap: 3rem;
+      }
+
+      .contact-info {
+        flex: 1;
+      }
+
+      .contact-info h3 {
+        font-size: 1.8rem;
+        color: var(--dark);
+        margin-bottom: 1.5rem;
+      }
+
+      .contact-info p {
+        color: var(--gray);
+        margin-bottom: 1.5rem;
+      }
+
+      .contact-details {
+        margin-top: 2rem;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 1.5rem;
+      }
+
+      .contact-icon {
+        width: 40px;
+        height: 40px;
+        background-color: #f1f5f9;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1rem;
+        color: var(--primary);
+      }
+
+      .contact-text h4 {
+        color: var(--dark);
+        margin-bottom: 0.2rem;
+      }
+
+      .contact-text p {
+        color: var(--gray);
+        margin-bottom: 0;
+      }
+
+      .contact-form {
+        flex: 1;
+        padding: 2rem;
+        background-color: #f8fafc;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: var(--dark);
+        font-weight: 500;
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 0.8rem;
+        border-radius: 4px;
+        border: 1px solid #010307;
+        outline: none;
+        transition: all 0.3s ease;
+      }
+
+      .form-control:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+      }
+
+      textarea.form-control {
+        resize: vertical;
+        min-height: 150px;
+      }
+
+      .submit-btn {
+        background-color: var(--primary);
+        color: white;
+        border: none;
+        padding: 0.8rem 2rem;
+        border-radius: 4px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .submit-btn:hover {
+        background-color: #1d4ed8;
+        transform: translateY(-3px);
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--dark);
+        color: white;
+        padding: 4rem 8% 2rem;
+      }
+
+      .footer-content {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 3rem;
+        margin-bottom: 3rem;
+      }
+
+      .footer-column {
+        flex: 1;
+        min-width: 250px;
+      }
+
+      .footer-logo {
+        color: white;
+        font-size: 1.5rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .footer-logo i {
+        color: var(--accent);
+        margin-right: 0.5rem;
+      }
+
+      .footer-description {
+        color: #cbd5e1;
+        margin-bottom: 1.5rem;
+      }
+
+      .social-icons {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .social-icon {
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        text-decoration: none;
+      }
+
+      .social-icon:hover {
+        background-color: var(--accent);
+        transform: translateY(-3px);
+      }
+
+      .footer-heading {
+        color: white;
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+        position: relative;
+        padding-bottom: 0.75rem;
+      }
+
+      .footer-heading::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 2px;
+        background-color: var(--accent);
+      }
+
+      .footer-links {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 0.75rem;
+      }
+
+      .footer-links a {
+        color: #cbd5e1;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+      }
+
+      .footer-links a i {
+        margin-right: 0.5rem;
+        font-size: 0.8rem;
+      }
+
+      .footer-links a:hover {
+        color: var(--accent);
+        transform: translateX(5px);
+      }
+
+      .footer-newsletter p {
+        color: #cbd5e1;
+        margin-bottom: 1rem;
+      }
+
+      .newsletter-form {
+        display: flex;
+      }
+
+      .newsletter-input {
+        flex: 1;
+        padding: 0.8rem;
+        border: none;
+        border-radius: 4px 0 0 4px;
+        outline: none;
+      }
+
+      .newsletter-btn {
+        background-color: var(--accent);
+        color: white;
+        border: none;
+        padding: 0 1rem;
+        border-radius: 0 4px 4px 0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .newsletter-btn:hover {
+        background-color: #e97d07;
+      }
+
+      .footer-bottom {
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        text-align: center;
+      }
+
+      .footer-bottom p {
+        color: #94a3b8;
+        font-size: 0.9rem;
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 1024px) {
         .about-content {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            gap: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .about-text {
-            color: white;
-            flex: 1;
-            max-width: 600px;
-        }
-
-        .about-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .about-lead {
-            font-size: 1.2rem;
-            color: #ccc;
-            margin-bottom: 20px;
-        }
-
-        .about-description {
-            color: #ccc;
-            margin-bottom: 30px;
-        }
-
-        .about-image img {
-            width: 100%;
-            max-width: 500px;
-            height: auto;
-            border-radius: 10px;
-        }
-
-        .read-more-btn {
-            background-color: var(--primary-color);
-            border: none;
-            color: white;
-            padding: 12px 30px;
-            font-size: 16px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .read-more-btn:hover {
-            background-color: var(--primary-dark);
-        }
-
-        /* Services Section */
-        .service-section {
-            background-color: var(--background-darker);
-            padding: 80px 20px;
-        }
-
-        .top-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .top-header h1 {
-            font-size: 2.5rem;
-            color: white;
-            margin-bottom: 15px;
-        }
-
-        .service-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .service-card {
-            background-color: var(--background-dark);
-            padding: 20px;
-            border-radius: 10px;
-            overflow: hidden;
-            transition: transform 0.3s;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .service-card img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 5px;
-        }
-
-        /* Contact Form */
-        .contact-section {
-            background-color: var(--background-dark);
-            padding: 80px 20px;
+          flex-direction: column;
         }
 
         .contact-container {
-            max-width: 500px;
-            margin: 0 auto;
-            background-color: var(--background-darker);
-            padding: 40px;
-            border-radius: 10px;
-            margin-right: 800px;
+          flex-direction: column;
+        }
+      }
+
+      @media (max-width: 768px) {
+        nav {
+          padding: 1rem 5%;
         }
 
-        .contact-container h2 {
-            color: white;
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 2rem;
+        #hero,
+        #about,
+        #services,
+        #projects,
+        #testimonials,
+        #cta,
+        #contact {
+          padding: 4rem 5%;
         }
 
-        .input-group {
-            margin-bottom: 20px;
+        .hero-content h1 {
+          font-size: 2.5rem;
         }
 
-        .input-group label {
-            display: block;
-            color: var(--text-light);
-            margin-bottom: 8px;
+        .hero-content p {
+          font-size: 1rem;
         }
 
-        .input-group input {
-            width: 100%;
-            padding: 12px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 5px;
-            color: white;
+        .about-stats {
+          flex-direction: column;
+          gap: 1rem;
         }
 
-        .input-group input:focus {
-            outline: none;
-            border-color: var(--primary-color);
+        .services-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .nav-links {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+          background-color: var(--dark);
+          flex-direction: column;
+          padding: 1rem 0;
+          box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
         }
 
-        .submit-btn {
-            width: 100%;
-            padding: 12px;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s;
+        .nav-links.active {
+          display: flex;
         }
 
-        .submit-btn:hover {
-            background-color: var(--primary-dark);
+        .nav-links li {
+          margin: 0;
+          width: 100%;
+          text-align: center;
         }
 
-        .error-message {
-            color: var(--primary-color);
-            margin-top: 20px;
-            text-align: center;
+        .nav-links a {
+          display: block;
+          padding: 1rem;
         }
 
-        .success-message {
-            color: green;
-            font-size: 1.2rem;
-            margin-top: 20px;
-            text-align: center;
+        .mobile-menu-btn {
+          display: block;
         }
 
-        /* Back to Top Button */
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 15px;
-            border-radius: 50%;
-            font-size: 20px;
-            cursor: pointer;
-            display: none;
-            transition: all 0.3s;
+        .cta-btn.secondary {
+          margin-left: 0;
+          margin-top: 1rem;
+          display: inline-block;
         }
 
-        .back-to-top:hover {
-            background-color: var(--primary-dark);
+        .projects-grid {
+          grid-template-columns: 1fr;
         }
 
-        /* Lightbox */
-        .lightbox {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            justify-content: center;
-            align-items: center;
-            z-index: 999;
+        .footer-content {
+          flex-direction: column;
+          gap: 2rem;
         }
-
-        .lightbox-content {
-            max-width: 90%;
-            max-height: 90%;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            color: white;
-            font-size: 40px;
-            cursor: pointer;
-        }
-
-        /* FAQ Accordion */
-        .accordion {
-            margin-top: 40px;
-            background-color: var(--background-dark);
-            padding: 20px;
-            border-radius: 10px;
-        }
-
-        .accordion-item {
-            margin-bottom: 20px;
-        }
-
-        .accordion-header {
-            background-color: var(--primary-dark);
-            color: white;
-            border: none;
-            padding: 15px;
-            width: 100%;
-            text-align: left;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .accordion-header:hover {
-            background-color: var(--primary-color);
-        }
-
-        .accordion-content {
-            display: none;
-            background-color: #333;
-            padding: 15px;
-            color: white;
-            border-radius: 5px;
-        }
+      }
     </style>
-</head>
-
-<body>
-    <nav>
-        <img src="lg.png" alt="Mahadeep Enterprises Logo">
-        <ul>
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#contact">Contact</a></li>
+  </head>
+  <body>
+    <!-- Header & Navigation -->
+    <header id="header">
+      <nav>
+        <a href="#" class="logo">
+          <i class="fas fa-cogs"></i>
+          Mahadeep Enterprises
+        </a>
+        <ul class="nav-links">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li>
+            <span id="open-auth-sidebar" class="login-btn" style="color: white">
+              Login / Sign Up
+            </span>
+          </li>
         </ul>
-        <div class="auth-links">
-            <a href="#login">Login</a>
-            <a href="#signup">Signup</a>
-        </div>
-    </nav>
 
-    <section id="hero" class="hero">
-        <video id="backVid" src="v1.mp4" autoplay loop muted></video>
-        <h1>Welcome to Mahadeep Enterprises</h1>
-        <p>Specializing in premium high-quality iron work for residential and commercial projects.</p>
+        <button class="mobile-menu-btn">
+          <i class="fas fa-bars"></i>
+        </button>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+
+    <section id="hero">
+      <div class="hero-content">
+        <h1>
+          Welcome to Mahadeep Enterprises
+          <!-- <span class="fab-text">(Engineering Fabrication)</span> -->
+        </h1>
+        <div class="fab-text" id="fabText"></div>
+        <!-- <span id="typedText"></span> -->
+        <p>
+          We transform your design concepts into precision-engineered metal
+          products with cutting-edge technology and unparalleled craftsmanship.
+        </p>
+        <a href="#contact" class="cta-btn">Request a Quote</a>
+        <a href="#services" class="cta-btn secondary">Our Services</a>
+      </div>
     </section>
 
-    <section id="about" class="about-section">
-        <div class="about-content">
-            <div class="about-text">
-                <h2 class="about-title">About Us</h2>
-                <p class="about-lead">Who We Are</p>
-                <p class="about-description">We are a leading company providing specialized solutions in various fields. Our dedication to excellence drives us to provide the best service to our clients.</p>
-                <button class="read-more-btn">Read More</button>
-            </div>
-            <div class="about-image">
-                <img src="welding-removebg-preview.png" alt="About">
-            </div>
+    <!-- About Section -->
+    <section id="about">
+      <div class="section-title">
+        <h2>About Us</h2>
+      </div>
+      <div class="about-content">
+        <div class="about-image">
+          <img
+            src="https://5.imimg.com/data5/BG/TQ/MY-165776/pneumatic-clutch-power-press-1000x1000.jpg"
+            alt="Metal fabrication workshop"
+          />
         </div>
+        <div class="about-text">
+          <h3>Expert Metal Fabrication Since 2005</h3>
+          <p>
+            Mahadeep Enterprises is a leading metal fabrication company
+            dedicated to delivering high-quality custom metal products for
+            various industries. With our state-of-the-art equipment and highly
+            skilled team, we provide innovative solutions to meet the most
+            demanding specifications.
+          </p>
+          <p>
+            Our commitment to quality, precision, and customer satisfaction has
+            made us the preferred partner for businesses seeking reliable metal
+            fabrication services. From design to delivery, we ensure every
+            project meets our exacting standards.
+          </p>
+          <div class="about-stats">
+            <div class="stat">
+              <div class="stat-number">18+</div>
+              <div class="stat-text">Years of Experience</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">500+</div>
+              <div class="stat-text">Projects Completed</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">100%</div>
+              <div class="stat-text">Client Satisfaction</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section id="services" class="service-section">
-        <div class="top-header">
-            <h1>Our Services</h1>
-            <p>We offer a wide range of services to meet your business needs.</p>
+    <!-- Services Section -->
+    <section id="services">
+      <div class="section-title">
+        <h2>Our Services</h2>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-img">
+            <img
+              src="https://media.istockphoto.com/id/1272135024/photo/mechanic-using-circular-saw-grinder-tool-with-protective-work-wear-at-factory.jpg?s=612x612&w=0&k=20&c=7VArWqwqOZzXA_k52bgUju9cu-6_aDKjURTzKWZgWmg="
+              alt="Laser Cutting"
+            />
+          </div>
+          <div class="service-content">
+            <h3>GrindCutting</h3>
+            <p>
+              Precision laser cutting services for various metals with tight
+              tolerances and exceptional edge quality. We can handle complex
+              shapes and patterns with our advanced laser cutting technology.
+            </p>
+            <a href="#" class="read-more"
+              >Learn More <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
         </div>
-        <div class="service-container">
-            <div class="service-card">
-                <img src="welding-removebg-preview.png" width="100%" height="auto" alt="Service 1">
-                <!-- <h3>Service 1</h3> -->
-                <p>Welding is a crucial process that joins metals or thermoplastics through heat and pressure, ensuring strong,
-                durable bonds for a wide range of industrial, structural, and artistic applications. Skilled welders utilize techniques 
-                like MIG, TIG, and stick welding to achieve precise, high-quality results.</p>
-            </div>
-            <div class="service-card">
-                <img src="service2.jpg" alt="Service 2">
-                <h3>Service 2</h3>
-                <p>Description of service 2...</p>
-            </div>
-            <div class="service-card">
-                <img src="service3.jpg" alt="Service 3">
-                <h3>Service 3</h3>
-                <p>Description of service 3...</p>
-            </div>
+        <div class="service-card">
+          <div class="service-img">
+            <img
+              src="https://media.istockphoto.com/id/1447581973/photo/top-view-construction-workers-or-blueprint-planning-in-house-home-or-office-building-in-real.jpg?s=612x612&w=0&k=20&c=HDVMA3lTJAr1XqSh1CxrGmfut8LfHxGbGjMZ1hF8X0k="
+              alt="Design Services"
+            />
+          </div>
+          <div class="service-content">
+            <h3>Design & Engineering</h3>
+            <p>
+              Comprehensive design and engineering services to optimize your
+              product for manufacturability, cost-efficiency, and performance.
+              We can work from your concepts or create designs from scratch.
+            </p>
+            <a href="#" class="read-more"
+              >Learn More <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
         </div>
+      </div>
     </section>
 
-    <section id="contact" class="contact-section">
-        <div class="contact-container">
-            <h2>Contact Us</h2>
-            <form id="contactForm">
-                <div class="input-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="input-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="input-group">
-                    <label for="phone">Phone</label>
-                    <input type="tel" id="phone" name="phone" required>
-                </div>
-                <button type="submit" class="submit-btn">Submit</button>
-            </form>
-            <div class="error-message" id="error-message"></div>
-            <div class="success-message" id="success-message"></div>
+    <!-- Projects Section -->
+    <section id="projects">
+      <div class="section-title">
+        <h2>Our Projects</h2>
+      </div>
+      <div class="projects-grid">
+        <div class="project-card">
+          <img
+            src="https://media.istockphoto.com/id/1135169078/photo/industrial-welder-with-torch.jpg?s=612x612&w=0&k=20&c=5viuH9WX6bHzOsyt3nMnjtdKfHm5FjCoY4B9B0ZZUpk="
+            alt="Project 1"
+            class="project-img"
+          />
+          <div class="project-overlay">
+            <h3 class="project-title">Industrial Equipment Frame</h3>
+            <p class="project-category">Structural Fabrication</p>
+            <a href="#" class="project-link"
+              >View Project <i class="fas fa-external-link-alt"></i
+            ></a>
+          </div>
         </div>
+        <div class="project-card">
+          <img
+            src=" "
+            alt="Project 2"
+            class="project-img"
+          />
+          <div class="project-overlay">
+            <h3 class="project-title">Custom Stainless Steel Kitchen</h3>
+            <p class="project-category">Commercial Fabrication</p>
+            <a href="#" class="project-link"
+              >View Project <i class="fas fa-external-link-alt"></i
+            ></a>
+          </div>
+        </div>
+        <div class="project-card">
+          <img
+            src="https://plus.unsplash.com/premium_photo-1676760960823-cca1c4943504?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8Q05DJTIwbWFjaGluaW5nJTIwd29ya3xlbnwwfHwwfHx8MA%3D%3D"
+            alt="Project 3"
+            class="project-img"
+          />
+          <div class="project-overlay">
+            <h3 class="project-title">Precision Machine Components</h3>
+            <p class="project-category">CNC Machining</p>
+            <a href="#" class="project-link"
+              >View Project <i class="fas fa-external-link-alt"></i
+            ></a>
+          </div>
+        </div>
+        <div class="project-card">
+          <img
+            src="https://images.unsplash.com/photo-1709130331476-49493111cc66?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fE1ldGFsJTIwUmFpbGluZ3N8ZW58MHx8MHx8fDA%3D"
+            alt="Project 4"
+            class="project-img"
+          />
+          <div class="project-overlay">
+            <h3 class="project-title">Architectural Metal Railings</h3>
+            <p class="project-category">Decorative Metalwork</p>
+            <a href="#" class="project-link"
+              >View Project <i class="fas fa-external-link-alt"></i
+            ></a>
+          </div>
+        </div>
+        <div class="project-card">
+          <img
+            src="https://images.unsplash.com/photo-1713699710774-b5d4d53c8b27?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fEN1c3RvbSUyME1ldGFsJTIwRW5jbG9zdXJlc3xlbnwwfHwwfHx8MA%3D%3D"
+            alt="Project 5"
+            class="project-img"
+          />
+          <div class="project-overlay">
+            <h3 class="project-title">Custom Metal Enclosures</h3>
+            <p class="project-category">Electronics Housing</p>
+            <a href="#" class="project-link"
+              >View Project <i class="fas fa-external-link-alt"></i
+            ></a>
+          </div>
+        </div>
+        <div class="project-card">
+          <img
+            src="/api/placeholder/600/400"
+            alt="Project 6"
+            class="project-img"
+          />
+          <div class="project-overlay">
+            <h3 class="project-title">Aerospace Components</h3>
+            <p class="project-category">Precision Machining</p>
+            <a href="#" class="project-link"
+              >View Project <i class="fas fa-external-link-alt"></i
+            ></a>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section id="faq">
-        <div class="accordion">
-            <div class="accordion-item">
-                <button class="accordion-header">What is Mahadeep Enterprises?</button>
-                <div class="accordion-content">
-                    <p>Mahadeep Enterprises is a leading provider of specialty services...</p>
-                </div>
+    <!-- Testimonials Section -->
+    <section id="testimonials">
+      <div class="section-title">
+        <h2>Client Testimonials</h2>
+      </div>
+      <div class="testimonials-slider">
+        <div class="testimonials-container">
+          <div class="testimonial">
+            <div class="testimonial-content">
+              <p>
+                "Mahadeep Enterprises delivered exceptional quality for our
+                custom equipment frames. Their attention to detail and ability
+                to work with tight tolerances made them our go-to fabrication
+                partner for all our projects."
+              </p>
+              <div class="quote-icon">
+                <i class="fas fa-quote-right"></i>
+              </div>
             </div>
-            <div class="accordion-item">
-                <button class="accordion-header">How can I contact you?</button>
-                <div class="accordion-content">
-                    <p>You can contact us through the contact form...</p>
-                </div>
+            <div class="client-info">
+              <div class="client-image">
+                <img
+                  src="https://media.istockphoto.com/id/1873081935/photo/mature-man-studio-portrait.webp?a=1&b=1&s=612x612&w=0&k=20&c=yghXGaSJH-NADAsVm4BFiVU_pg35U5p-jp1VajhcmXE="
+                  alt="Client"
+                />
+              </div>
+              <div class="client-details">
+                <h4>Avinash Joshi</h4>
+                <p>CEO, Industrial Systems Inc.</p>
+              </div>
             </div>
+          </div>
+          <div class="testimonial">
+            <div class="testimonial-content">
+              <p>
+                "We've worked with many fabrication shops, but PrecisionMetal
+                stands out for their commitment to quality and on-time delivery.
+                Their engineering team helped us optimize our designs for better
+                performance and cost savings."
+              </p>
+              <div class="quote-icon">
+                <i class="fas fa-quote-right"></i>
+              </div>
+            </div>
+            <div class="client-info">
+              <div class="client-image">
+                <img
+                  src="https://images.unsplash.com/photo-1616002851413-ebcc9611139d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGluZGlhbiUyMG1hbnxlbnwwfHwwfHx8MA%3D%3D"
+                  alt="Client"
+                />
+              </div>
+              <div class="client-details">
+                <h4>Rajesh Kumar</h4>
+                <p>Production Manager, TechMech Solutions</p>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial">
+            <div class="testimonial-content">
+              <p>
+                "The team at Mahadeep Enterprises took our complex architectural
+                design and turned it into a stunning reality. Their expertise in
+                metalwork and ability to solve problems during fabrication was
+                impressive. Highly recommended!"
+              </p>
+              <div class="quote-icon">
+                <i class="fas fa-quote-right"></i>
+              </div>
+            </div>
+            <div class="client-info">
+              <div class="client-image">
+                <img
+                  src="https://media.istockphoto.com/id/1179019570/photo/one-businessman.jpg?s=612x612&w=0&k=20&c=sOKdNoGh2_8zT71GwXCwPvk0sRF6nEZHre2tXTvEigY="
+                  alt="Client"
+                />
+              </div>
+              <div class="client-details">
+                <h4>Navin Gupta</h4>
+                <p>Principal Architect, Modern Design Group</p>
+              </div>
+            </div>
+          </div>
         </div>
+        <div class="slider-controls">
+          <button class="slider-btn prev-btn">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="slider-btn next-btn">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
     </section>
 
-    <!-- Back to Top Button -->
-    <button class="back-to-top" id="backToTopBtn">↑</button>
+    <!-- Call to Action Section -->
+    <section id="cta">
+      <div class="cta-content">
+        <h2>Ready to Start Your Metal Fabrication Project?</h2>
+        <p>
+          Contact our team today to discuss your requirements and get a
+          customized quote. We're ready to bring your ideas to life with
+          precision and expertise.
+        </p>
+        <a href="#contact" class="cta-btn">Contact Us Today</a>
+      </div>
+    </section>
 
-    <!-- Lightbox -->
-    <div id="lightbox" class="lightbox">
-        <span class="close-btn" id="closeBtn">&times;</span>
-        <img class="lightbox-content" id="lightboxImage" src="" alt="">
+    <!-- Contact Section -->
+    <section id="contact">
+      <div class="section-title">
+        <h2>Contact Us</h2>
+      </div>
+      <div class="contact-container">
+        <div class="contact-info">
+          <h3>Get In Touch</h3>
+          <p>
+            Have questions about our metal fabrication services? Looking for a
+            quote on your project? Our team is ready to assist you with any
+            inquiries.
+          </p>
+          <div class="contact-details">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="contact-text">
+                <h4>Our Location</h4>
+                <p>
+                  S.no.245,Shop no.3,Gidrai pada,Tungareshwar
+                  Road,Sativali,Vasai(E),Palghar-401208.
+                </p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-phone-alt"></i>
+              </div>
+              <div class="contact-text">
+                <h4>Phone Number</h4>
+                <p>7400415618 & 7666233304</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-text">
+                <h4>Email Address</h4>
+                <p>mahadeepenterprise20@gmail.com</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="contact-text">
+                <h4>Business Hours</h4>
+                <p>Monday - saturady: 8:00 AM - 8:00 PM</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form">
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="name" class="form-label">Your Name</label>
+              <input type="text" id="name" class="form-control" required />
+            </div>
+            <div class="form-group">
+              <label for="email" class="form-label">Email Address</label>
+              <input type="email" id="email" class="form-control" required />
+            </div>
+            <div class="form-group">
+              <label for="phone" class="form-label">Phone Number</label>
+              <input type="tel" id="phone" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label for="subject" class="form-label">Subject</label>
+              <input type="text" id="subject" class="form-control" required />
+            </div>
+            <div class="form-group">
+              <label for="message" class="form-label">Your Message</label>
+              <textarea id="message" class="form-control" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sidebar Auth Panel -->
+    <div id="auth-sidebar" class="auth-sidebar">
+      <div class="auth-sidebar-content">
+        <span id="close-auth-sidebar" class="close-btn">&times;</span>
+
+        <!-- Paste your existing auth code below (tabs + forms) -->
+        <!-- Start of your existing auth HTML -->
+        <div class="auth-tabs">
+          <button class="auth-tab active" data-tab="login">Login</button>
+          <button class="auth-tab" data-tab="signup">Sign Up</button>
+        </div>
+
+        <!-- Login Form -->
+        <div class="auth-form active" id="login-form">
+          <h2>Welcome Back</h2>
+          <p class="auth-subtitle">
+            Login to access your profile and saved content.
+          </p>
+          <form>
+            <div class="form-group">
+              <label for="login-email">Email</label>
+              <input type="email" id="login-email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="login-password">Password</label>
+              <input
+                type="password"
+                id="login-password"
+                name="password"
+                required
+              />
+            </div>
+            <div class="form-group remember-forgot">
+              <div>
+                <input type="checkbox" id="remember-me" name="remember" />
+                <label for="remember-me">Remember me</label>
+              </div>
+              <a href="#" class="forgot-password">Forgot password?</a>
+            </div>
+            <button type="submit" class="btn primary btn-block">Login</button>
+          </form>
+
+          <div class="auth-separator">
+            <span>or login with</span>
+          </div>
+
+          <div class="social-auth">
+            <button class="social-auth-btn google">Google</button>
+            <button class="social-auth-btn github">GitHub</button>
+          </div>
+        </div>
+
+        <!-- Sign Up Form -->
+        <div class="auth-form" id="signup-form">
+          <h2>Create Account</h2>
+          <p class="auth-subtitle">
+            Sign up to showcase your projects and connect with others.
+          </p>
+          <form>
+            <div class="form-group">
+              <label for="signup-name">Full Name</label>
+              <input type="text" id="signup-name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="signup-email">Email</label>
+              <input type="email" id="signup-email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="signup-password">Password</label>
+              <input
+                type="password"
+                id="signup-password"
+                name="password"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="signup-confirm-password">Confirm Password</label>
+              <input
+                type="password"
+                id="signup-confirm-password"
+                name="confirm-password"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <input type="checkbox" id="terms" name="terms" required />
+              <label for="terms">
+                I agree to the <a href="#">Terms of Service</a> and
+                <a href="#">Privacy Policy</a>
+              </label>
+            </div>
+            <button type="submit" class="btn primary btn-block">
+              Create Account
+            </button>
+          </form>
+        </div>
+        <!-- End of your existing auth HTML -->
+      </div>
     </div>
 
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-column">
+          <div class="footer-logo">
+            <i class="fas fa-cogs"></i>
+            PrecisionMetal
+          </div>
+          <p class="footer-description">
+            Industry-leading metal fabrication services delivering
+            precision-engineered solutions for your most demanding projects.
+          </p>
+          <div class="social-icons">
+            <a href="#" class="social-icon"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h3 class="footer-heading">Quick Links</h3>
+          <ul class="footer-links">
+            <li>
+              <a href="#hero"><i class="fas fa-chevron-right"></i> Home</a>
+            </li>
+            <li>
+              <a href="#about"><i class="fas fa-chevron-right"></i> About Us</a>
+            </li>
+            <li>
+              <a href="#services"
+                ><i class="fas fa-chevron-right"></i> Services</a
+              >
+            </li>
+            <li>
+              <a href="#projects"
+                ><i class="fas fa-chevron-right"></i> Projects</a
+              >
+            </li>
+            <li>
+              <a href="#contact"
+                ><i class="fas fa-chevron-right"></i> Contact Us</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3 class="footer-heading">Our Services</h3>
+          <ul class="footer-links">
+            <li>
+              <a href="#"><i class="fas fa-chevron-right"></i> grindCutting</a>
+            </li>
+            <li>
+              <a href="#"><i class="fas fa-chevron-right"></i> CNC Machining</a>
+            </li>
+            <li>
+              <a href="#"
+                ><i class="fas fa-chevron-right"></i> Welding & Assembly</a
+              >
+            </li>
+            <li>
+              <a href="#"><i class="fas fa-chevron-right"></i> Metal Forming</a>
+            </li>
+            <li>
+              <a href="#"
+                ><i class="fas fa-chevron-right"></i> Surface Finishing</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3 class="footer-heading">Newsletter</h3>
+          <p class="footer-newsletter">
+            Subscribe to our newsletter to receive updates on our services,
+            projects, and metal fabrication insights.
+          </p>
+          <form class="newsletter-form">
+            <input
+              type="email"
+              class="newsletter-input"
+              placeholder="Your Email Address"
+              required
+            />
+            <button type="submit" class="newsletter-btn">
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 PrecisionMetal. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <!-- Include Typed.js from CDN -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script> -->
     <script>
-        // Active Link Highlighting
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('nav ul li a');
+      const texts = [
+        "(Engineering Fabrication)",
+        "MFG:- Elevators Counter Weight",
+      ];
 
-        window.addEventListener('scroll', () => {
-            let currentSection = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (pageYOffset >= sectionTop - sectionHeight / 3) {
-                    currentSection = section.getAttribute('id');
-                }
-            });
+      let index = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+      const typingSpeed = 120; // slower typing
+      const deletingSpeed = 60; // slower deletion
+      const delayBetweenWords = 2000; // delay after full word
 
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').includes(currentSection)) {
-                    link.classList.add('active');
-                }
-            });
+      const target = document.getElementById("fabText");
+
+      function type() {
+        const currentText = texts[index];
+        if (isDeleting) {
+          charIndex--;
+          target.textContent = currentText.substring(0, charIndex);
+          if (charIndex === 0) {
+            isDeleting = false;
+            index = (index + 1) % texts.length;
+            setTimeout(type, 600);
+          } else {
+            setTimeout(type, deletingSpeed);
+          }
+        } else {
+          charIndex++;
+          target.textContent = currentText.substring(0, charIndex);
+          if (charIndex === currentText.length) {
+            isDeleting = true;
+            setTimeout(type, delayBetweenWords);
+          } else {
+            setTimeout(type, typingSpeed);
+          }
+        }
+      }
+
+      type();
+      // var typingEffect = new Typed("#typedText", {
+      //   strings: ["MFG:- Elevators Counter Weight"],
+      //   loop: true,
+      //   typeSpeed: 100,
+      //   backSpeed: 80,
+      //   backDelay: 2000,
+      // });
+      // Mobile Menu Toggle
+      document.addEventListener("DOMContentLoaded", function () {
+        const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
+        const navLinks = document.querySelector(".nav-links");
+
+        mobileMenuBtn.addEventListener("click", function () {
+          navLinks.classList.toggle("active");
+
+          const icon = mobileMenuBtn.querySelector("i");
+          if (navLinks.classList.contains("active")) {
+            icon.classList.remove("fa-bars");
+            icon.classList.add("fa-times");
+          } else {
+            icon.classList.remove("fa-times");
+            icon.classList.add("fa-bars");
+          }
         });
 
-        // Show back to top button
-        const backToTopBtn = document.getElementById('backToTopBtn');
-        window.onscroll = () => {
-            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-                backToTopBtn.style.display = 'block';
-            } else {
-                backToTopBtn.style.display = 'none';
+        // Hide mobile menu when clicking on a link
+        const navLinksItems = document.querySelectorAll(".nav-links a");
+        navLinksItems.forEach((item) => {
+          item.addEventListener("click", function () {
+            if (navLinks.classList.contains("active")) {
+              navLinks.classList.remove("active");
+              const icon = mobileMenuBtn.querySelector("i");
+              icon.classList.remove("fa-times");
+              icon.classList.add("fa-bars");
             }
+          });
+        });
+
+        // Header scroll effect
+        const header = document.getElementById("header");
+        window.addEventListener("scroll", function () {
+          if (window.scrollY > 100) {
+            header.classList.add("scrolled");
+          } else {
+            header.classList.remove("scrolled");
+          }
+        });
+
+        // Testimonials slider
+        const testimonialsContainer = document.querySelector(
+          ".testimonials-container"
+        );
+        const testimonials = document.querySelectorAll(".testimonial");
+        const prevBtn = document.querySelector(".prev-btn");
+        const nextBtn = document.querySelector(".next-btn");
+
+        let currentIndex = 0;
+        const testimonialWidth = 100; // 100%
+
+        // Initialize slider
+        updateSlider();
+
+        // Previous button click
+        prevBtn.addEventListener("click", function () {
+          if (currentIndex > 0) {
+            currentIndex--;
+            updateSlider();
+          }
+        });
+
+        // Next button click
+        nextBtn.addEventListener("click", function () {
+          if (currentIndex < testimonials.length - 1) {
+            currentIndex++;
+            updateSlider();
+          }
+        });
+
+        // Update slider position
+        function updateSlider() {
+          testimonialsContainer.style.transform = `translateX(-${
+            currentIndex * testimonialWidth
+          }%)`;
+
+          // Update button states
+          if (currentIndex === 0) {
+            prevBtn.style.opacity = "0.5";
+            prevBtn.style.cursor = "not-allowed";
+          } else {
+            prevBtn.style.opacity = "1";
+            prevBtn.style.cursor = "pointer";
+          }
+
+          if (currentIndex === testimonials.length - 1) {
+            nextBtn.style.opacity = "0.5";
+            nextBtn.style.cursor = "not-allowed";
+          } else {
+            nextBtn.style.opacity = "1";
+            nextBtn.style.cursor = "pointer";
+          }
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute("href");
+            if (targetId === "#") return;
+
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              const headerOffset = 80;
+              const elementPosition = targetElement.getBoundingClientRect().top;
+              const offsetPosition =
+                elementPosition + window.pageYOffset - headerOffset;
+
+              window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth",
+              });
+            }
+          });
+        });
+
+        // Contact form submission
+        const contactForm = document.getElementById("contactForm");
+        if (contactForm) {
+          contactForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            // Form validation
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const subject = document.getElementById("subject").value;
+            const message = document.getElementById("message").value;
+
+            if (!name || !email || !subject || !message) {
+              alert("Please fill all required fields.");
+              return;
+            }
+
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+              alert("Please enter a valid email address.");
+              return;
+            }
+
+            // Form submission would typically go to a server
+            // For demo purposes, we'll just show an alert
+            alert("Thank you for your message! We will contact you soon.");
+            contactForm.reset();
+          });
+        }
+
+        // Animation on scroll (simple implementation)
+        const animateOnScroll = function () {
+          const elements = document.querySelectorAll(
+            ".service-card, .project-card, .about-content, .contact-container"
+          );
+
+          elements.forEach((element) => {
+            const elementPosition = element.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+
+            if (elementPosition < windowHeight - 100) {
+              element.style.opacity = "1";
+              element.style.transform = "translateY(0)";
+            }
+          });
         };
 
-        backToTopBtn.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+        // Initialize animation styles
+        const elementsToAnimate = document.querySelectorAll(
+          ".service-card, .project-card, .about-content, .contact-container"
+        );
+        elementsToAnimate.forEach((element) => {
+          element.style.opacity = "0";
+          element.style.transform = "translateY(30px)";
+          element.style.transition = "opacity 0.6s ease, transform 0.6s ease";
         });
 
-        // Lightbox for images
-        const serviceImages = document.querySelectorAll('.service-card img');
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImage = document.getElementById('lightboxImage');
-        const closeBtn = document.getElementById('closeBtn');
+        // Run animation check on load and scroll
+        window.addEventListener("load", animateOnScroll);
+        window.addEventListener("scroll", animateOnScroll);
 
-        serviceImages.forEach(image => {
-            image.addEventListener('click', (e) => {
-                lightbox.style.display = 'flex';
-                lightboxImage.src = e.target.src;
-            });
-        });
+        // Newsletter form submission
+        const newsletterForm = document.querySelector(".newsletter-form");
+        if (newsletterForm) {
+          newsletterForm.addEventListener("submit", function (e) {
+            e.preventDefault();
 
-        closeBtn.addEventListener('click', () => {
-            lightbox.style.display = 'none';
-        });
+            const email = this.querySelector(".newsletter-input").value;
 
-        // Accordion for FAQ
-        const accordionHeaders = document.querySelectorAll('.accordion-header');
-        accordionHeaders.forEach(header => {
-            header.addEventListener('click', () => {
-                const content = header.nextElementSibling;
-                content.style.display = content.style.display === 'block' ? 'none' : 'block';
-            });
-        });
-
-        // Form validation and submission
-        document.getElementById('contactForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            const errorElement = document.getElementById('error-message');
-            const successMessage = document.getElementById('success-message');
-
-            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-            const phonePattern = /^[0-9]{10}$/;
-
-            let errorMessage = '';
-
-            if (!emailPattern.test(email)) {
-                errorMessage += 'Please enter a valid email address.\n';
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+              alert("Please enter a valid email address.");
+              return;
             }
 
-            if (!phonePattern.test(phone)) {
-                errorMessage += 'Please enter a valid 10-digit phone number.\n';
-            }
+            // Submission would typically go to a server
+            // For demo purposes, we'll just show an alert
+            alert("Thank you for subscribing to our newsletter!");
+            this.reset();
+          });
+        }
+      });
+      // Sidebar toggle
+      const openBtn = document.getElementById("open-auth-sidebar");
+      const closeBtn = document.getElementById("close-auth-sidebar");
+      const sidebar = document.getElementById("auth-sidebar");
 
-            if (errorMessage) {
-                errorElement.textContent = errorMessage;
-            } else {
-                errorElement.textContent = '';
-                successMessage.style.display = 'block';
-                setTimeout(() => {
-                    successMessage.style.display = 'none';
-                    this.reset();
-                }, 3000);
-            }
+      openBtn.addEventListener("click", () => {
+        sidebar.classList.add("active");
+        document.body.classList.add("sidebar-open");
+      });
+
+      closeBtn.addEventListener("click", () => {
+        sidebar.classList.remove("active");
+        document.body.classList.remove("sidebar-open");
+      });
+
+      // Tab switching
+      const authTabs = document.querySelectorAll(".auth-tab");
+      const authForms = document.querySelectorAll(".auth-form");
+
+      authTabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          authTabs.forEach((t) => t.classList.remove("active"));
+          authForms.forEach((f) => f.classList.remove("active"));
+
+          tab.classList.add("active");
+          document
+            .getElementById(`${tab.dataset.tab}-form`)
+            .classList.add("active");
         });
+      });
     </script>
-</body>
-
+  </body>
 </html>
